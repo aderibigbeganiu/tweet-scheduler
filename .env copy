@@ -1,0 +1,10 @@
+# abayomiganiy
+CLIENT_ID=<client_id>
+CLIENT_SECRET=<client_secret>
+ACCESS_TOKEN=<access_token>
+ACCESS_TOKEN_SECRET=<access_token_secret>
+BEARER_TOKEN=<bearer_token>
+API_KEY=<api_key>
+API_KEY_SECRET=<api_key_secret>
+OPENAI_API_KEY=<openai_api_key>
+CALLBACK_URL=http://172.20.10.8:5173

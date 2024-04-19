@@ -10,8 +10,10 @@
     "node-fetch": "^3.3.2",
     "node-schedule": "^2.1.1",
     "openai": "^4.33.0",
+    "sentiment": "^5.0.2",
     "twemoji": "^14.0.2",
     "twemoji-parser": "^14.0.0",
+    "twit": "^2.2.11",
     "twitter-api-v2": "^1.16.1"
   },
   "scripts": {

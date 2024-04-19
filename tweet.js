@@ -1,10 +1,41 @@
 const { TwitterApi } = require("twitter-api-v2");
 const { openaiCompletions } = require("./openaiFuncs");
-const generateImage = require("./generateImage");
+const promptText = require("./prompts");
+// const generateImage = require("./generateImage");
 require("dotenv").config();
 
 const tweet = async (promptText) => {
     try {
+        const imageList = [
+            {
+                id: "img0",
+                path: "./assets/img0.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img1.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img2.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img3.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img4.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img5.jpeg",
+            },
+            {
+                id: "img0",
+                path: "./assets/img6.jpeg",
+            },
+        ];
         const client = new TwitterApi({
             appKey: process.env.API_KEY,
             appSecret: process.env.API_KEY_SECRET,
@@ -16,11 +47,15 @@ const tweet = async (promptText) => {
         const gptResponseText = gptResponse.choices[0].message.content;
 
         const mediaIds = await Promise.all([
+            // client.v1.uploadMedia(
+            //     Buffer.from(await generateImage(gptResponseText)),
+            //     {
+            //         type: "png",
+            //     }
+            // ),
+            // randomly select image from imageList
             client.v1.uploadMedia(
-                Buffer.from(await generateImage(gptResponseText)),
-                {
-                    type: "png",
-                }
+                imageList[Math.floor(Math.random() * imageList.length)].path
             ),
         ]);
 

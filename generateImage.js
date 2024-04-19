@@ -27,6 +27,13 @@ function wrapText(context, text, x, y, maxWidth, lineHeight) {
     // Calculate y-coordinate to center vertically
     const startY = y - totalTextHeight / 2;
 
+    // Ensure that the text fits within the available vertical space
+    const availableVerticalSpace = context.canvas.height - startY;
+    if (totalTextHeight > availableVerticalSpace) {
+        // If the text exceeds the available vertical space, adjust the lineHeight
+        lineHeight *= availableVerticalSpace / totalTextHeight;
+    }
+
     for (let i = 0; i < lines.length; i++) {
         // Calculate the position to center the line horizontally
         const lineWidth = context.measureText(lines[i]).width;
@@ -58,9 +65,9 @@ const generateImage = async (gptResponseText) => {
     context.fillStyle = "#ffffff";
     context.font = `48px "Noto Color Emoji", sans-serif`; // Use the registered font
     const maxWidth = width * 0.8; // Maximum width for wrapped text
-    const lineHeight = 60; // Line height for wrapped text
+    const lineHeight = 60; // Initial line height for wrapped text
     const x = (width - maxWidth) / 2; // Center horizontally
-    const y = height / 2 - lineHeight / 2; // Center vertically
+    const y = height / 2; // Center vertically
     const text = gptResponseText;
 
     // Draw the text onto the canvas
@@ -71,4 +78,9 @@ const generateImage = async (gptResponseText) => {
     return buffer;
 };
 
-module.exports = generateImage
+generateImage(`Oya, make we jolly dey go! 🚀💃
+Join me for d trip of a lifetime $TRIP
+We dey carry $BUBBLE, $MOJO, $RICY, $PIXIZ
+E no fit better pass dis one! 🌟🌈`)
+
+module.exports = generateImage;

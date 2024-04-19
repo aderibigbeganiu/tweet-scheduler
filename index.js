@@ -3,7 +3,7 @@ const tweet = require("./tweet");
 const schedule = require("node-schedule");
 
 try {
-    const scheduledTask = schedule.scheduleJob("*/5 * * * *", () => {
+    const scheduledTask = schedule.scheduleJob("*/30 * * * *", () => {
         console.log(
             "Task executed every minute:",
             new Date().toLocaleTimeString()
